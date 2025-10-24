@@ -53,17 +53,33 @@ docker build -t <nombre imagen>:<tag> .
 ### Ejecutar el archivo Dockerfile y construir una imagen en la versión 1.0
 No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 ```
-
+docker build -t rockylinux-apache:1.0 .
 ```
+Debido a que las builds oficiales de CentOS están deprecadas y todas sus etiquetas han llegado al final de su vida útil (EOL), decidí utilizar Rocky Linux, que es una opción compatible para la construcción de la imagen, ya que las imágenes de CentOS me causaban problemas. 
+<img width="1386" height="356" alt="Dockerfile rockylinux-apache:1.0" src="https://github.com/user-attachments/assets/e9245882-c7f3-4b13-a6c3-c04299678248" />  
+
 
 **¿Cuántos pasos se han ejecutado?**
-# RESPONDER 
+<img width="753" height="55" alt="Dockerfile rockylinux-apache:1.0 build exec" src="https://github.com/user-attachments/assets/135fe8d7-1c67-48bc-876b-066fd87a8d05" />  
+Se han ejecutado **9 pasos** 
+
 
 ### Inspeccionar la imagen creada
-# COMPLETAR CON UNA CAPTURA
+```
+docker inspect rockylinux-apache:1.0
+```
+<img width="749" height="832" alt="docker inspect rockylinux-apache:1.0" src="https://github.com/user-attachments/assets/0d134a66-96bb-42fa-8e10-cf3bce8cb0a7" />
+
+
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+```
+docker build -t rockylinux-apache:2.0 .
+```
+<img width="741" height="50" alt="Dockerfile rockylinux-apache:2.0 build exec" src="https://github.com/user-attachments/assets/69e630fa-b5fd-465e-b6b4-4915cf7cd3b0" />  
+Se han ejecutado también **9 pasos**, pero se puede notar que el tiempo de creación de la imagen es mucho menor que la primera vez, debido al mecanismo de caché que utiliza Docker.
+
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -75,14 +91,15 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 
 ### Crear un contenedor a partir de las imagen creada, mapear todos los puertos
 ```
-
+docker run -d -p 8080:80 --name apache-srv rockylinux-apache:2.0
 ```
+<img width="1155" height="229" alt="Screenshot 2025-10-24 094815" src="https://github.com/user-attachments/assets/b3bbf931-86d1-40d9-97e8-5c8a3d4ce060" />
 
 ### ¿Con que puerto host se está realizando el mapeo?
-# COMPLETAR CON LA RESPUESTA
+El puerto del **host** es **8080**, que se mapea al puerto **80** del contenedor. 
 
 **¿Qué es una imagen huérfana?**
-# COMPLETAR CON LA RESPUESTA
+Una imagen huérfana (o dangling image en inglés) en Docker es una imagen que ya no tiene ninguna etiqueta asociada y no está siendo usada por ningún contenedor.
 
 ### Identificar imágenes huérfanas
 ```
