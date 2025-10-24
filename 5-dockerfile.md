@@ -59,7 +59,7 @@ Debido a que las builds oficiales de CentOS están deprecadas y todas sus etique
 <img width="1386" height="356" alt="Dockerfile rockylinux-apache:1.0" src="https://github.com/user-attachments/assets/e9245882-c7f3-4b13-a6c3-c04299678248" />  
 
 
-**¿Cuántos pasos se han ejecutado?**
+**¿Cuántos pasos se han ejecutado?**  
 <img width="753" height="55" alt="Dockerfile rockylinux-apache:1.0 build exec" src="https://github.com/user-attachments/assets/135fe8d7-1c67-48bc-876b-066fd87a8d05" />  
 Se han ejecutado **9 pasos** 
 
@@ -73,7 +73,7 @@ docker inspect rockylinux-apache:1.0
 
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
-**¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+**¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**  
 ```
 docker build -t rockylinux-apache:2.0 .
 ```
@@ -98,7 +98,7 @@ docker run -d -p 8080:80 --name apache-srv rockylinux-apache:2.0
 ### ¿Con que puerto host se está realizando el mapeo?
 El puerto del **host** es **8080**, que se mapea al puerto **80** del contenedor. 
 
-**¿Qué es una imagen huérfana?**
+**¿Qué es una imagen huérfana?**  
 Una imagen huérfana (o dangling image en inglés) en Docker es una imagen que ya no tiene ninguna etiqueta asociada y no está siendo usada por ningún contenedor.
 
 ### Identificar imágenes huérfanas
