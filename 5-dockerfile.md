@@ -78,6 +78,7 @@ docker inspect rockylinux-apache:1.0
 docker build -t rockylinux-apache:2.0 .
 ```
 <img width="741" height="50" alt="Dockerfile rockylinux-apache:2.0 build exec" src="https://github.com/user-attachments/assets/69e630fa-b5fd-465e-b6b4-4915cf7cd3b0" />  
+
 Se han ejecutado también **9 pasos**, pero se puede notar que el tiempo de creación de la imagen es mucho menor que la primera vez, debido al mecanismo de caché que utiliza Docker.
 
 
