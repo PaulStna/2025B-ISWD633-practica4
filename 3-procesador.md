@@ -9,8 +9,10 @@ Asignar núcleos de CPU específicos:
 --cpuset-cpus=<lista de núcleos>
 ```
 
-**¿Como saber el numero de procesadores virtuales que tiene una máquina?**
-## COMPLETAR
+**¿Como saber el numero de procesadores virtuales que tiene una máquina?**  
+- **Linux:** `nproc`  
+- **Windows:** `wmic cpu get NumberOfLogicalProcessors`  
+- **macOS:** `sysctl -n hw.logicalcpu`
 
 ## Ejemplos
 _Puedes copiar y ejecutar directamente cada uno de los comandos_
